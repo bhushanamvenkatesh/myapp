@@ -1,14 +1,10 @@
-// import logo from './logo.svg';
-// import React, {useState} from 'react';
-import Products from './Products'
 
 import './App.css';
+import Displayproducts from './Displayproducts';
 
 function App() {
   
-  return (
-   <Products/>
-  );
+  return (  <Displayproducts/>);
 }
 
 export default App;
