@@ -5,11 +5,28 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import '../node_modules/bootstrap/dist/js/bootstrap.min'
 import 'bootstrap/dist/css/bootstrap.css'
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+// import CartItem from './CartItem';
+import CartComponent from './CartComponent';
 
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <App/>,
+        
+    },
+    {
+        path:"/gotocart",
+        element:<CartComponent/>
+    }
+]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-    <App />
+   <RouterProvider router={router}/>
 
 );
 

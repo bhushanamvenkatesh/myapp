@@ -1,50 +1,62 @@
 import React from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-import CartItem from "./CartItem";
-
+import Navbar from "./Navbar";
+import CartComponent from "./CartComponent";
+import Spinner from "./Spinner";
 
 function Displayproducts() {
     let [products, setProducts] = React.useState([])
-    const [cartArr,setCartArr]=React.useState([])
+    let [cartArr, setCartArr] = React.useState([])
+    let [isLoading, setLoader] = React.useState(true)
+    let cartCount = React.useRef(0)
+
+    cartCount.current = cartArr.reduce((a, each) => { return a = a + each.quantity }, 0)
+
     React.useEffect(() => {
         axios.get('https://fakestoreapi.com/products')
-            .then((res) => setProducts((a) => (res.data)))
+            .then((res) => setProducts((a) => {
+                setLoader(false)
+                return (res.data)
+            }))
+            
+        
     }, [])
 
-    function addtoCart(item){
-        
-        setCartArr((a)=>{
-            let index=a.findIndex((i)=>i.title===item.title)
-            let temp=[...a]
-            let l={...item,'quantity':1}
-            console.log(l)
-             temp=index==-1?[...temp,item.quantity=1]:temp[index].quantity+=1
-            return [...a,l]
-        })
-        
+    let addtoCart = function (id) {
+        let item = products.filter((each) => each.id === id)
+        let nobj = item[0]
+        if (cartArr.length === 0) {
+            nobj.quantity = 1
+            setCartArr([...cartArr, nobj])
+        }
+        else {
+            let temp = [...cartArr]
+            let index = temp.findIndex((each) => each.id === nobj.id)
+            if (index === -1) {
+                setCartArr([...temp, { ...nobj, 'quantity': 1 }])
+            }
+            else {
+                temp[index].quantity += 1
+                setCartArr([...temp])
+            }
+        }
+
     }
     return <>
-   <h1>Products</h1>
-    <div className="t-container d-flex flex-row">
-        <div class="d-flex flex-row flex-wrap products-container">
-        {
-            products.map((eachProduct) => <ProductCard addtoCart={addtoCart} {...eachProduct} />)
-        }
+        <Navbar ref={cartCount} />
+        {isLoading&&<Spinner />}
+
+        <div className="t-container d-flex flex-row">
+            <div class="d-flex flex-row flex-wrap products-container">
+                {
+                    products.map((eachProduct) => <ProductCard  {...eachProduct} addtoCart={addtoCart} />)
+                }
+            </div>
+            {cartArr.length > 0 && <CartComponent cartArr={cartArr} />}
+
         </div>
-        <div className="cart-container">
-        {/* <h1>{console.log(cartArr)}</h1> */}
-        <h4 style={{textAlign:'center'}}>Cart Items</h4>
-            {
-                
-                cartArr?.map((eachItem)=><CartItem {...eachItem}/>)
-            }
-        </div>
-        
-    </div>
     </>
 
 }
-
-
 export default Displayproducts
