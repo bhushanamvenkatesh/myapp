@@ -18,3 +18,27 @@ code {
   display: flex;
 }
 
+.list-style{
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-container{
+  border: 1px solid red;
+  display: flex;
+
+}
+
+.details{
+  border: 1px solid green;
+  width: 30%;
+}
+
+.card{
+  border: 1px solid green;
+  text-align: center;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: 1px 1px 1px 1px;
+}
