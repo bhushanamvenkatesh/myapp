@@ -1,53 +1,31 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useFormik } from "formik";
 
-function Loginform() {
-
-    useEffect(()=>{
-        document.querySelector('input').focus()
-    },[])
-
-    const iref2=React.useRef()
-    const iref3=React.useRef()
-    const iref4=React.useRef()
-
-    function change(e,ref){
-        return e.key=="Enter"&& ref.current.focus()
-    }
-
-    function get(s){
-        console.log(document.getElementsByName('myform'))
-    }
+function Loginfrom() {
+    let myformdata = useFormik({
+        initialValues: {
+            'fname': "",
+            'pass': "",
+            'email': "",
+            'age': ""
+        },
+        onSubmit: (fd) => {
+            console.log('submit',fd)
+        }
+    })
 
 
-    return <>
-        <div>
-            <h2>My Form</h2>
-            <form name='myform' onClick={(e)=>e.preventDefault()}>
-                <input type="text" name='fname' placeholder="Enter your first name" onKeyUp={(e)=>change(e,iref2)}/> <br /> 
-                <input type="text" ref={iref2} name='lname' placeholder="Enter your last name" onKeyUp={(e)=>change(e,iref3)}/> <br />
-                <input type="number" ref={iref3} name='age' placeholder="Enter your age" /><br />
-                Gender: <input type="radio" name='gender' />:male<input type="radio" name='gender'/>:female
-                <br />
-                <select value='city'>
-                    <option value="hyderabad" name='city'>Hyderabad</option>
-                    <option value="vijayawada" name='city'>vijayawada</option>
-                    <option value='bengalore' name='city'>Bengalore</option>
-                    <option value="chennai" name='city'>Chennai</option>
-                    
-                </select>
-                <br />
-                <button onSubmit={(e)=>console.log(e)}>submit</button>
+    return <div className="my-form">
+        <h1>Login form</h1>
+        <form onSubmit={myformdata.handleSubmit}>
+            <input type="text" name='fname' placeholder="Enter your name" onChange={myformdata.handleChange} /> <br />
+            <input type="password" name='pass' placeholder="Enter your password" onChange={myformdata.handleChange} /> <br />
+            <input type="text" name='email' placeholder="Enter your email" onChange={myformdata.handleChange} /> <br />
+            <input type="text" name='age' placeholder="Enter your age" onChange={myformdata.handleChange} /> <br /><br />
+            <button type="submit">submit</button>
+        </form>
+       
 
-
-
-
-
-            </form>
-        </div>
-
-
-
-    </>
+    </div>
 }
-
-export default Loginform
+export default Loginfrom
