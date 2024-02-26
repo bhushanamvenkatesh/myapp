@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
+import Loginform2 from "./Method2";
 
 function Loginfrom() {
     let myformdata = useFormik({
@@ -24,6 +25,7 @@ function Loginfrom() {
             <input type="text" name='age' placeholder="Enter your age" onChange={myformdata.handleChange} /> <br /><br />
             <button type="submit">submit</button>
         </form>
+        <Loginform2 />
        
 
     </div>
