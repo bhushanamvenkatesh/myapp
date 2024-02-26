@@ -1,14 +1,10 @@
-// import logo from './logo.svg';
-// import React, {useState} from 'react';
-import Products from './Products'
 
 import './App.css';
+import Loginform from './Liginform';
 
 function App() {
   
-  return (
-   <Products/>
-  );
+  return ( <Loginform/>);
 }
 
 export default App;
