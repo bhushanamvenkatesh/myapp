@@ -1,7 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-const Navbar=React.forwardRef(function(par,cartRef) {
-    // console.log(cartRef.current)
+import React from "react"
+import {Link} from 'react-router-dom'
+// const Navbar=React.forwardRef(function()) {
+
+function Navbar(){
+
     return <>
         <nav className="navbar navbar-expand-lg bg-primary nav-container">
             <div class="container-fluid">
@@ -16,12 +18,18 @@ const Navbar=React.forwardRef(function(par,cartRef) {
                         <a class="nav-link" href="#"></a>
                     </div>
                 </div>
-                <Link to='gotocart'><i className="bi bi-cart cart-icon"><sup>{cartRef.current}</sup></i></Link>
+              
+                    {/* <i className="bi bi-cart cart-icon"><sup>{cartRef.current}</sup></i> */}
+                   <Link to='cartcomponent'>
+                   <i className="bi bi-cart cart-icon"><sup>{0}</sup></i>
+                   </Link> 
+
+                
                 <button className="login-button">Logout</button>
                 
             </div>
         </nav>
     </>
-})
+}
 
 export default Navbar

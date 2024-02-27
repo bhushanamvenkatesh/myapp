@@ -1,13 +1,20 @@
 
 import './App.css';
-import Displayproducts from './Displayproducts';
-import Navbar from './Navbar';
+import { Outlet } from 'react-router';
+
+import Navbar from './Components/Navbar';
+
 
 function App() {
-  
-  return (  <>
- 
-  <Displayproducts/>
+
+  return (<>
+  <Navbar/>
+  <Outlet></Outlet>
+    
+    
+
+
+
   </>);
 }
 

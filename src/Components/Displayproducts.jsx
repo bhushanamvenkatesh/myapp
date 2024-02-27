@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import CartComponent from "./CartComponent";
 import Spinner from "./Spinner";
 
@@ -44,7 +44,7 @@ function Displayproducts() {
 
     }
     return <>
-        <Navbar ref={cartCount} />
+        {/* <Navbar ref={cartCount} /> */}
         {isLoading&&<Spinner />}
 
         <div className="t-container d-flex flex-row">
@@ -53,7 +53,7 @@ function Displayproducts() {
                     products.map((eachProduct) => <ProductCard  {...eachProduct} addtoCart={addtoCart} />)
                 }
             </div>
-            {cartArr.length > 0 && <CartComponent cartArr={cartArr} />}
+            {/* {cartArr.length > 0 && <CartComponent cartArr={cartArr} />} */}
 
         </div>
     </>
