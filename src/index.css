@@ -18,3 +18,54 @@ code {
   display: flex;
 }
 
+.strike{
+  text-decoration: line-through;
+}
+.todos-container{
+  border:1px solid blue;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 2px;
+  text-align: center;
+  padding: 15px;
+  /* margin: 15px; */
+  height: 100vh;
+  box-sizing: border-box;
+
+}
+.todos-container li{
+  margin-top: 10px;
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 1px solid red; */
+  box-shadow: 2px 2px 2px 2px;
+  border-radius: 5px;
+  
+
+}
+.todos-container button{
+  background-color: blue;
+  color: white;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.todos-container li button{
+  background-color: blue;
+  color: white;
+  border: none;
+  width: 50px;
+  padding:10px;
+  border-radius: 10px;
+  font-size: 15px;
+
+}
+.todo{
+  
+  width: 50%;
+  /* border: 1px solid red; */
+}
+

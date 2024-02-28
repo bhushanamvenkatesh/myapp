@@ -1,13 +1,15 @@
-// import logo from './logo.svg';
-// import React, {useState} from 'react';
-import Products from './Products'
+import { Provider } from 'react-redux';
+import store from './store/store'
+import Todos from './Todos';
 
 import './App.css';
 
 function App() {
   
   return (
-   <Products/>
+    <Provider store={store}>
+      <Todos/>
+    </Provider>
   );
 }
 
