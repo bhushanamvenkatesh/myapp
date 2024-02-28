@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 function ProductCard(p) {
     // console.log(p.addtoCart)
@@ -9,11 +10,13 @@ function ProductCard(p) {
             <div class="card-body d-flex flex-column justify-content-between">
                 <span class="card-title">{title.slice(0,32)}</span>
                 <span class="card-text">Rs:{price}/-</span>
+                {/* <button class='btn btn-primary' onClick={()=>p.addtoCart(id)}>add to cart</button> */}
                 <button class='btn btn-primary' onClick={()=>p.addtoCart(id)}>add to cart</button>
+
             </div>
     </div>
 
 
 }
 
-export default ProductCard
+export default connect(store=>store)(ProductCard)

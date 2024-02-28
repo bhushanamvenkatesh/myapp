@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from 'react-router-dom'
-// const Navbar=React.forwardRef(function()) {
+
 
 function Navbar(){
 
@@ -13,9 +13,10 @@ function Navbar(){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav d-flex flex-row align-items-center">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        <input type="text" className="input-element" placeholder="Search"/>
-                        <a class="nav-link" href="#"></a>
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <Link style={{color:'white'}} to='displayproducts'>Home</Link></a>
+                        {/* <input type="text" className="input-element" placeholder="Search"/> */}
+                       
                     </div>
                 </div>
               

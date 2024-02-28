@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-// import Navbar from "./Navbar";
-import CartComponent from "./CartComponent";
+// import CartComponent from "./CartComponent";
 import Spinner from "./Spinner";
+import { connect } from "react-redux";
+// import { connect } from "http2";
 
-function Displayproducts() {
+function Displayproducts(props) {
+    console.log('dis',props)
     let [products, setProducts] = React.useState([])
     let [cartArr, setCartArr] = React.useState([])
     let [isLoading, setLoader] = React.useState(true)
@@ -23,34 +25,37 @@ function Displayproducts() {
         
     }, [])
 
-    let addtoCart = function (id) {
-        let item = products.filter((each) => each.id === id)
-        let nobj = item[0]
-        if (cartArr.length === 0) {
-            nobj.quantity = 1
-            setCartArr([...cartArr, nobj])
-        }
-        else {
-            let temp = [...cartArr]
-            let index = temp.findIndex((each) => each.id === nobj.id)
-            if (index === -1) {
-                setCartArr([...temp, { ...nobj, 'quantity': 1 }])
-            }
-            else {
-                temp[index].quantity += 1
-                setCartArr([...temp])
-            }
-        }
+    // let addtoCart = function (id) {
+    //     let item = products.filter((each) => each.id === id)
+    //     let nobj = item[0]
+    //     if (cartArr.length === 0) {
+    //         nobj.quantity = 1
+    //         setCartArr([...cartArr, nobj])
+    //     }
+    //     else {
+    //         let temp = [...cartArr]
+    //         let index = temp.findIndex((each) => each.id === nobj.id)
+    //         if (index === -1) {
+    //             setCartArr([...temp, { ...nobj, 'quantity': 1 }])
+    //         }
+    //         else {
+    //             temp[index].quantity += 1
+    //             setCartArr([...temp])
+    //         }
+    //     }
+
+    // }
+
+    let addtoCart=function(eachProduct){
+        props.dispach({type:'ADDTOCART',payload:eachProduct})
 
     }
     return <>
-        {/* <Navbar ref={cartCount} /> */}
         {isLoading&&<Spinner />}
-
         <div className="t-container d-flex flex-row">
             <div class="d-flex flex-row flex-wrap products-container">
                 {
-                    products.map((eachProduct) => <ProductCard  {...eachProduct} addtoCart={addtoCart} />)
+                    products.map((eachProduct) => <ProductCard  {...eachProduct} addtoCart={()=>addtoCart(eachProduct)} />)
                 }
             </div>
             {/* {cartArr.length > 0 && <CartComponent cartArr={cartArr} />} */}
@@ -59,4 +64,4 @@ function Displayproducts() {
     </>
 
 }
-export default Displayproducts
+export default connect(store=>store)(Displayproducts)

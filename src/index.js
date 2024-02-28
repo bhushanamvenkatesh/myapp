@@ -3,18 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import DisplayProducts from './Components/Displayproducts'
-
-// import '../node_modules/bootstrap/dist/js/bootstrap.min'
 import 'bootstrap/dist/css/bootstrap.css'
-
 import {
    createBrowserRouter,
    RouterProvider,
  } from "react-router-dom";
-import CartComponent from './Components/CartComponent';
-import Login from './Components/Login';
-
+ import Login from './Components/Login';
+ import Displayproducts from './Components/Displayproducts'
+ import CartComponent from './Components/CartComponent';
  const router = createBrowserRouter([
    {
      path: "/",
@@ -26,19 +22,15 @@ import Login from './Components/Login';
       },
       {
          path:'/displayproducts',
-         element:<DisplayProducts/>
+         element:<Displayproducts/>
       },
       {
          path:'/cartcomponent',
          element:<CartComponent/>
       }
      ]
-    
    },
-   
-   
  ]);
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <RouterProvider router={router} />
