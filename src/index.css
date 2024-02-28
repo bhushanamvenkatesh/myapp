@@ -17,4 +17,7 @@ code {
 .products{
   display: flex;
 }
+.strike{
+  text-decoration: line-through;
+}
 
