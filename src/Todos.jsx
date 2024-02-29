@@ -1,4 +1,4 @@
-import { file } from "@babel/types";
+// import { file } from "@babel/types";
 import React from "react";
 import { connect } from "react-redux";
 
@@ -15,7 +15,10 @@ function Todos({ filteredTodos,todosArr, currfilter,dispatch }) {
 
     }
 
-
+    function addTodo(){
+         dispatch({ type: 'ADDTODO', payload: newTodo })
+        //  dispatch({ type: currfilter})
+    }
     function updatefilter(e){
         console.log("component",e.target.value)
         dispatch({type:e.target.value})
@@ -25,7 +28,7 @@ function Todos({ filteredTodos,todosArr, currfilter,dispatch }) {
     return <div className="todos-container">
         <h2>Todos List</h2>
         <input type="text" onChange={(e) => updateState(e)} />
-        <button onClick={() => dispatch({ type: 'ADDTODO', payload: newTodo })}>add todo</button>
+        <button className="add-btn" onClick={()=>addTodo()}>add todo</button>
         <br />
         <input type="radio" name='filter' value="ALL" ref={iref} onChange={(e)=>updatefilter(e)}/>:All &nbsp;
         <input type="radio" name='filter' value="COMPLETED" onChange={(e)=>updatefilter(e)} />:Completed &nbsp;
@@ -35,9 +38,9 @@ function Todos({ filteredTodos,todosArr, currfilter,dispatch }) {
         {
             filteredTodos.map((each) =>
                 <div><span className={`${'todo'} ${each.status && 'strike'} ` }>{each.title}</span>
-                    <button onClick={() => dispatch({ type: 'DEL', payload: each.title })}>Del</button>
-                    <button onClick={() => dispatch({ type: 'DONE', payload: each.title })}>Done</button>
-                    <button onClick={() => dispatch({ type: 'UNDO', payload: each.title })}>Undo</button>
+                    <button onClick={() => dispatch({ type: 'DEL', payload: each.title })} className="del-btn">Del</button>
+                   {!each.status?<button  className="done-btn" onClick={() => dispatch({ type: 'DONE', payload: each.title })}>Done</button>:
+                    <button className="undo-btn" onClick={() => dispatch({ type: 'UNDO', payload: each.title })}>Undo</button>}
                 </div>
             )
         }

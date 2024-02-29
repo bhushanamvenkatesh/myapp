@@ -35,7 +35,7 @@ code {
 }
 
 .todos-container button{
-  background-color: blue;
+  /* background-color: blue; */
   color: white;
   padding: 8px;
   margin: 5px;
@@ -43,14 +43,20 @@ code {
   border: none;
 }
 .todos-container div button{
-  background-color: blue;
+  /* background-color: blue; */
   color: white;
   border: none;
   width: 50px;
   padding:10px;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 15px;  
 
+}
+.del-btn{
+  background-color: red;
+}
+.add-btn{
+  background-color: blue;
 }
 
 .list-items div{
@@ -67,3 +73,12 @@ code {
 .todo{
   width: 50%;
 }
+
+.done-btn{
+  background-color: green;
+}
+.undo-btn{
+  background-color: orange;
+}
+
+

@@ -6,16 +6,27 @@ const initialVallues = {
         }
     ],
     filteredTodos: [],
-    currfilter:'ALL'
+    currfilter: 'ALL'
 }
 
 const todosReducer = function (state = initialVallues, action) {
-       state.filteredTodos=[...state.todosArr]
+
+    state.filteredTodos = [...state.todosArr]
     if (action.type === 'ADDTODO') {
         state.todosArr = [...state.todosArr, { title: action.payload, status: false }]
-        return {
-            ...state,filteredTodos:[...state.todosArr]
+        if (state.currfilter === 'ALL') {
+            return {
+                ...state, filteredTodos: [...state.todosArr]
+            }
         }
+        if (state.currfilter === 'COMPLETED') {
+            return { ...state, filteredTodos: [...state.todosArr.filter((e) => e.status)] }
+        }
+        if (state.currfilter === 'PENDING') {
+            return { ...state, filteredTodos: [...state.todosArr.filter((e) => !e.status)] }
+
+        }
+
     }
     if (action.type === 'DEL') {
         return { ...state, todosArr: [...state.todosArr.filter((each) => each.title !== action.payload)] }
@@ -41,20 +52,20 @@ const todosReducer = function (state = initialVallues, action) {
         }
     }
 
-    if(action.type==='ALL'){
-        state.currfilter='ALL'
-        console.log('in reducer',state)
-        return{...state,filteredTodos:[...state.todosArr]}
+    if (action.type === 'ALL') {
+        state.currfilter = 'ALL'
+        console.log('in reducer', state)
+        return { ...state, filteredTodos: [...state.todosArr] }
     }
 
-    if(action.type==='COMPLETED'){
-        state.currfilter='COMPLETED'
-        return{...state,filteredTodos:[...state.todosArr.filter((e)=>e.status)]}
+    if (action.type === 'COMPLETED') {
+        state.currfilter = 'COMPLETED'
+        return { ...state, filteredTodos: [...state.todosArr.filter((e) => e.status)] }
     }
 
-    if(action.type==='PENDING'){
-        state.currfilter='PENDING'
-        return{...state,filteredTodos:[...state.todosArr.filter((e)=>!e.status)]}
+    if (action.type === 'PENDING') {
+        state.currfilter = 'PENDING'
+        return { ...state, filteredTodos: [...state.todosArr.filter((e) => !e.status)] }
 
     }
     return state
