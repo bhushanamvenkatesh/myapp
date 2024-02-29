@@ -11,7 +11,7 @@ function ProductCard(p) {
                 <span class="card-title">{title.slice(0,32)}</span>
                 <span class="card-text">Rs:{price}/-</span>
                 {/* <button class='btn btn-primary' onClick={()=>p.addtoCart(id)}>add to cart</button> */}
-                <button class='btn btn-primary' onClick={()=>p.addtoCart(id)}>add to cart</button>
+                <button class='btn btn-primary' onClick={()=>p.addtoCart(p)}>add to cart</button>
 
             </div>
     </div>

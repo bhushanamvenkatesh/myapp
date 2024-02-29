@@ -1,19 +1,17 @@
 import React from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-// import CartComponent from "./CartComponent";
 import Spinner from "./Spinner";
 import { connect } from "react-redux";
-// import { connect } from "http2";
 
 function Displayproducts(props) {
-    console.log('dis',props)
+    // console.log('dis',props)
     let [products, setProducts] = React.useState([])
-    let [cartArr, setCartArr] = React.useState([])
+    // let [cartArr, setCartArr] = React.useState([])
     let [isLoading, setLoader] = React.useState(true)
     let cartCount = React.useRef(0)
 
-    cartCount.current = cartArr.reduce((a, each) => { return a = a + each.quantity }, 0)
+    // cartCount.current = cartArr.reduce((a, each) => { return a = a + each.quantity }, 0)
 
     React.useEffect(() => {
         axios.get('https://fakestoreapi.com/products')
@@ -47,7 +45,9 @@ function Displayproducts(props) {
     // }
 
     let addtoCart=function(eachProduct){
-        props.dispach({type:'ADDTOCART',payload:eachProduct})
+        // console.log(props)
+        props.dispatch({type:'ADDTOCART',payload:eachProduct})
+
 
     }
     return <>

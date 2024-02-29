@@ -1,9 +1,10 @@
 import React from "react"
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 
-function Navbar(){
-
+function Navbar(props){
+    let totalItems=props.cartData.cartArr.length
     return <>
         <nav className="navbar navbar-expand-lg bg-primary nav-container">
             <div class="container-fluid">
@@ -16,21 +17,17 @@ function Navbar(){
                         <a class="nav-link active" aria-current="page" href="#">
                             <Link style={{color:'white'}} to='displayproducts'>Home</Link></a>
                         {/* <input type="text" className="input-element" placeholder="Search"/> */}
-                       
                     </div>
                 </div>
-              
                     {/* <i className="bi bi-cart cart-icon"><sup>{cartRef.current}</sup></i> */}
                    <Link to='cartcomponent'>
-                   <i className="bi bi-cart cart-icon"><sup>{0}</sup></i>
-                   </Link> 
-
-                
-                <button className="login-button">Logout</button>
+                   <i className="bi bi-cart cart-icon"><sup>{totalItems}</sup></i>
+                   </Link>
+                <button className="login-button"><Link to='/'>Logout</Link></button>
                 
             </div>
         </nav>
     </>
 }
 
-export default Navbar
+export default connect(store=>store)(Navbar)
