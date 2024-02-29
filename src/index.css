@@ -30,21 +30,10 @@ code {
   /* margin: 15px; */
   height: 100vh;
   box-sizing: border-box;
-
-}
-.todos-container li{
-  margin-top: 10px;
-  padding: 10px;
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* border: 1px solid red; */
-  box-shadow: 2px 2px 2px 2px;
-  border-radius: 5px;
   
 
 }
+
 .todos-container button{
   background-color: blue;
   color: white;
@@ -53,7 +42,7 @@ code {
   border-radius: 5px;
   border: none;
 }
-.todos-container li button{
+.todos-container div button{
   background-color: blue;
   color: white;
   border: none;
@@ -63,9 +52,18 @@ code {
   font-size: 15px;
 
 }
-.todo{
-  
-  width: 50%;
-  /* border: 1px solid red; */
-}
 
+.list-items div{
+  /* background-color: red; */
+  box-shadow: 2px 2px 2px 2px;
+  width: 50%;
+  margin: 6px auto;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+.todo{
+  width: 50%;
+}
