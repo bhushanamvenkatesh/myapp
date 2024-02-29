@@ -38,7 +38,6 @@ function Todos({ filteredTodos,todosArr, currfilter,dispatch }) {
                     <button onClick={() => dispatch({ type: 'DEL', payload: each.title })}>Del</button>
                     <button onClick={() => dispatch({ type: 'DONE', payload: each.title })}>Done</button>
                     <button onClick={() => dispatch({ type: 'UNDO', payload: each.title })}>Undo</button>
-
                 </div>
             )
         }
