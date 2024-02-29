@@ -49,7 +49,7 @@ code {
 .products-container{
   /* width: 70vw; */
   padding: 0px;
-  justify-content: space-between;
+  justify-content: center;
   /* border: 1px solid green; */
 }
 
