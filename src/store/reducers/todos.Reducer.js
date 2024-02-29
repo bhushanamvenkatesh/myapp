@@ -5,24 +5,24 @@ const initialVallues = {
             status: false
         }
     ],
-    filteredTodos: []
+    filteredTodos: [],
+    currfilter:'ALL'
 }
 
 const todosReducer = function (state = initialVallues, action) {
-   state.filteredTodos=[...state.todosArr]
+       state.filteredTodos=[...state.todosArr]
     if (action.type === 'ADDTODO') {
-        state.todosArr=[...state.todosArr, { title: action.payload, status: false }]
-        
-        return { ...state, todosArr: [...state.todosArr],filteredTodos:[...state.todosArr]
-     }
+        state.todosArr = [...state.todosArr, { title: action.payload, status: false }]
+        return {
+            ...state,filteredTodos:[...state.todosArr]
+        }
     }
     if (action.type === 'DEL') {
-
-        return { ...state, filteredTodos: [...state.todosArr.filter((each) => each.title !== action.payload)] }
+        return { ...state, todosArr: [...state.todosArr.filter((each) => each.title !== action.payload)] }
     }
     if (action.type === 'DONE') {
         return {
-            ...state, filteredTodos: [...state.todosArr.map((each) => {
+            ...state, todosArr: [...state.todosArr.map((each) => {
                 if (each.title === action.payload) {
                     each.status = true
                 }
@@ -32,7 +32,7 @@ const todosReducer = function (state = initialVallues, action) {
     }
     if (action.type === 'UNDO') {
         return {
-            ...state, filteredTodos: [...state.todosArr.map((each) => {
+            ...state, todosArr: [...state.todosArr.map((each) => {
                 if (each.title === action.payload) {
                     each.status = false
                 }
@@ -41,16 +41,21 @@ const todosReducer = function (state = initialVallues, action) {
         }
     }
 
-    if (action.type === 'ALL') {
-        return { ...state, filteredTodos: [...state.todosArr] }
+    if(action.type==='ALL'){
+        state.currfilter='ALL'
+        console.log('in reducer',state)
+        return{...state,filteredTodos:[...state.todosArr]}
     }
 
-    if (action.type === 'COMPLETED') {
-        return { ...state, filteredTodos: [...state.todosArr.filter(each => each.status)] }
+    if(action.type==='COMPLETED'){
+        state.currfilter='COMPLETED'
+        return{...state,filteredTodos:[...state.todosArr.filter((e)=>e.status)]}
     }
 
-    if (action.type === 'PENDING') {
-        return { ...state, filteredTodos: [...state.todosArr.filter(each => !each.status)] }
+    if(action.type==='PENDING'){
+        state.currfilter='PENDING'
+        return{...state,filteredTodos:[...state.todosArr.filter((e)=>!e.status)]}
+
     }
     return state
 
