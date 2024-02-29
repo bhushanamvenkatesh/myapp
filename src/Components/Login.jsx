@@ -14,7 +14,7 @@ function Login(props){
             'password':''
         },
         onSubmit:((formdata)=>{
-            if(formdata.name==='venkat' && formdata.password==='1234'){
+            if(formdata.name==='venkat' && formdata.password==='12345'){
                 {console.log('namv')}
                 return <Link to='displayproducts'/> 
             }
