@@ -1,8 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import Loginform2 from "./Method2";
+import RednderData from "./RenderData";
 
 function Loginfrom() {
+    let [userData, setData] = React.useState([])
     let myformdata = useFormik({
         initialValues: {
             'fname': "",
@@ -11,12 +13,13 @@ function Loginfrom() {
             'age': ""
         },
         onSubmit: (fd) => {
-            console.log('submit',fd)
+            setData((p) => [...p, fd])
         }
     })
 
 
     return <div className="my-form">
+        {/* {console.log(userData)} */}
         <h1>Login form</h1>
         <form onSubmit={myformdata.handleSubmit}>
             <input type="text" name='fname' placeholder="Enter your name" onChange={myformdata.handleChange} /> <br />
@@ -25,8 +28,8 @@ function Loginfrom() {
             <input type="text" name='age' placeholder="Enter your age" onChange={myformdata.handleChange} /> <br /><br />
             <button type="submit">submit</button>
         </form>
-        <Loginform2 />
-       
+        <RednderData userData={userData}/>
+
 
     </div>
 }

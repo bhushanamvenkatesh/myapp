@@ -14,14 +14,33 @@ code {
     monospace;
 }
 
-.products{
-  display: flex;
-}
+
 .my-form{
   text-align: center;
   border: 1px solid green;
   border-radius: 5px;
   box-shadow: 2px 2px;
   margin: 5px;
+  height: 100vh;
+
+
+}
+.my-form input{
+  margin: 2px;
+  height: 18px;
+}
+.my-form button{
+  background-color: blue;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.t{
+  /* border: 1px solid ; */
+  display: flex;
+  justify-content: center;
 }
 
