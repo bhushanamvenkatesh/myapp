@@ -1,23 +1,20 @@
 const initialValue={
     userDetails:{
         uname:'venkat',
-        password:'12345'
+        password:'12345',
+       
 
     },
     isUserValid:false
 }
 
 const fomrReducer=function(state=initialValue,action){
-    let a=action.payload
-    // console.log(a.uname)
-    let {uname}={...a}
-    console.log('form',uname)
-    // let person={
-    //     age:25
-    // }
-    // console.log(person.age)
-    // let age={...person}
-    // console.log(age)
+    // console.log(action)
+ if(action.type==='LOGIN' && action.payload.uname===state.userDetails.uname && action.payload.password){
+    state.isUserValid=true
     return state
+ }
+   
+    return state 
 }
 export default fomrReducer
