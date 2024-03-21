@@ -1,0 +1,1 @@
+module.exports=[{'aname':'venkat','password':'1234'}]

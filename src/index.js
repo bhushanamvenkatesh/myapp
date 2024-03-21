@@ -3,12 +3,40 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import '../node_modules/bootstrap/dist/js/bootstrap.min'
+import { Provider } from 'react-redux';
+import { store } from './store';
+import {
+    createBrowserRouter,
+    RouterProvider,
+  } from "react-router-dom";
+import Home from './components/Home'
+import Loginform from './components/Loginform';
+const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <App />,
+      children:[
+        {
+            path:'/',
+            element:<Home/>
+        },
+        {
+            path:'/adminPage',
+            element:<Loginform/>
+        }
+      ]
+     
+    
+    },
+  ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- 
-    <App />
+    <Provider store={store}>
+        
+        <RouterProvider router={router} />
+    </Provider>
+
 
 );
 

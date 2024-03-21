@@ -1,13 +1,17 @@
-// import logo from './logo.svg';
-// import React, {useState} from 'react';
-import Products from './Products'
+
 
 import './App.css';
-
+import Navbar from './components/Navbar';
+import { Outlet } from 'react-router-dom';
 function App() {
-  
+
   return (
-   <Products/>
+    <>
+      <Navbar />
+      <Outlet></Outlet>
+    </>
+
+
   );
 }
 
