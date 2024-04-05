@@ -1,13 +1,14 @@
-// import logo from './logo.svg';
-// import React, {useState} from 'react';
-import Products from './Products'
 
 import './App.css';
-
+import Counter from './features/counter/Counter';
+import Todos from './features/todos/Todos';
 function App() {
-  
+
   return (
-   <Products/>
+    <>
+      <Counter />
+      <Todos/>
+    </>
   );
 }
 
