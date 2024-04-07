@@ -14,7 +14,18 @@ code {
     monospace;
 }
 
-.products{
-  display: flex;
+.my-box{
+  border: 1px solid;
+  text-align: center;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
 }
 
+.list{
+  list-style: none;
+}
+
+.button-container{
+  text-align: center;
+}
